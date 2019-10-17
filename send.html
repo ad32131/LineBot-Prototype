@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script>
+            function send_msg(){
+                document.getElementById("msg_content").value = window.btoa(unescape(encodeURIComponent(document.getElementById("msg_content").value)));
+                document.getElementById("frm").submit();
+            }
+        </script>
+    </head>
+    <body>
+        Broadcast<br>
+        <form method="POST" action="./send_broadcast.php" id="frm">
+        <textarea id="msg_content" name="msg_content">
+
+        </textarea>
+        <input type="button" value="Send" onclick="send_msg();"/>
+        </form>
+    </body>
+</html>

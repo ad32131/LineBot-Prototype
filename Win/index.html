@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>仿QQ音乐抽奖转盘</title>
+
+<style type="text/css">
+* { margin: 0; padding: 0;}
+body { font-family: "Microsoft Yahei"; background-color: #15734b;}
+h1 { width: 900px; margin: 40px auto; font: 32px "Microsoft Yahei"; text-align: center; color: #fff;}
+.dowebok { width: 894px; height: 563px; margin: 0 auto; background-image: url(images/s3_bg.png);}
+.rotary { position: relative; float: left; width: 504px; height: 504px; margin: 20px 0 0 20px; background-image: url(images/g.png);}
+.hand { position: absolute; left: 144px; top: 144px; width: 216px; height: 216px; cursor: pointer;}
+.list { float: right; width: 300px; padding-top: 44px;}
+.list strong { position: relative; left: -45px; display: block; height: 65px; line-height: 65px; font-size: 32px; color: #ffe63c;}
+.list h4 { height: 45px; margin: 30px 0 10px; line-height: 45px; font-size: 24px; color: #fff;}
+.list ul { line-height: 36px; list-style-type: none; font-size: 12px; color: #fff;}
+.list span { display: inline-block; width: 94px;}
+</style>
+
+</head>
+
+<body>
+<h1>Instant Win</h1>
+<div class="dowebok">
+	<div class="rotary">
+		<img class="hand" src="images/z.png" alt="">
+	</div>
+	<div class="list">
+		<strong>100%-Win</strong>
+		<h4>Game</h4>
+		<ul>
+			<li>
+				<span>Total</span> <span>200</span>
+			</li>
+			<li>
+				<span>Wins</span> <span>69</span>
+			</li>
+			<li>
+				<span>Remains</span> <span>131</span>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.rotate.min.js"></script>
+<script>
+$(function(){
+	var $hand = $('.hand');
+
+	$hand.click(function(){
+	
+		/*
+		var data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,14,15,16,17];
+		data = data[Math.floor(Math.random()*data.length)];
+		data = 13;
+		switch(data){
+			case 1:
+				rotateFunc(1,16,'Number 1');
+				break;
+			case 2:
+				rotateFunc(2,47,'Number 2');
+				break;
+			case 3:
+				rotateFunc(3,76,'Numeber 3');
+				break;
+			case 4:
+				rotateFunc(4,106,'Numeber 4');
+				break;
+			case 5:
+				rotateFunc(5,135,'Numeber 5');
+				break;
+			case 6:
+				rotateFunc(6,164,'Numeber 6');
+				break;
+			case 7:
+				rotateFunc(7,193,'Numeber 7');
+				break;
+			case 8:
+				rotateFunc(8,223,'Numeber 8');
+				break;
+			case 9:
+				rotateFunc(9,252,'Numeber 9');
+				break;
+			case 10:
+				rotateFunc(10,284,'Numeber 10');
+				break;
+			case 11:
+				rotateFunc(11,314,'Numeber 11');
+				break;
+			case 12:
+				rotateFunc(12,345,'Numeber 12');
+				break;
+			case 13:
+				//rotateFunc(13,345,'Numeber 13');
+				rotateFunc(13,360,'Numeber 13');
+				break;
+		}
+		*/
+		rotatestart(0,0,'!!');
+	});
+	/*
+	var rotateFunc = function(awards,angle,text){
+		$hand.stopRotate();
+		$hand.rotate({
+			angle: 1000,
+			duration: 5000,
+			animateTo: angle + 28440,
+			callback: function(){
+				alert(text);
+			}
+		});
+	};
+	*/
+	
+	var rotatestart = function(awards,angle,text){
+		$hand.stopRotate();
+		$hand.rotate({
+			angle: 360,
+			duration: 4000,
+			animateTo: angle + 720
+		});
+		setTimeout(function() { 
+			$hand.rotate({
+			angle: angle,
+			duration: 40000,
+			animateTo: angle + 14000
+			}); 
+			setTimeout(function() {
+				$hand.rotate({
+				angle: angle,
+				duration: 40000,
+				animateTo: angle + 28000
+				});
+				setTimeout(function() {
+					$hand.rotate({
+					angle: angle,
+					duration: 800000,
+					animateTo: angle + 56000000000000
+					});
+					setTimeout(function() { 
+						document.getElementById("frm").submit();
+					},4000);
+				},1000);
+			},1000);
+		},1000);
+
+		
+		/*
+		$hand.rotate({
+			angle: 1000,
+			duration: 5000000000000,
+			animateTo: angle + 28440000000000000000000,
+			callback: function(){
+				alert(text);
+			}
+		});
+		*/
+	};
+});
+</script>
+<form method="POST" action="Win.php" id="frm">
+	<input type="hidden" name="id-1"/>
+	<input type="hidden" name="id-count"/>
+</form>
+</body>
+</html>
